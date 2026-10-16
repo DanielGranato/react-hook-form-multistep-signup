@@ -44,7 +44,7 @@ The design is available on [Figma](https://www.figma.com/file/hsW25fAq36IDzzIxBt
 
 ```bash
 # Clone the repository
-git clone https://github.com/DanielGranato/<repo-name>.git
+git clone https://github.com/DanielGranato/react-hook-form-multistep-signup.git
 
 # Navigate into the project folder
 cd <repo-name>
@@ -71,6 +71,3 @@ This project was built to practice:
 - Typing form data with TypeScript interfaces
 - Fetching data from an external API (ViaCEP) and handling request errors
 
-## 📚 Course
-
-This project is part of Alura's React learning track. To build the complete project for web and mobile, check the [Web and Mobile apps with React and React Native](https://cursos.alura.com.br/formacao-aplicacoes-web-mobile-react-react-native) path.
