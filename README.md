@@ -1,64 +1,76 @@
-![Voll](thumb.png)
-
 # Voll
 
-A Voll med é um clínica especializada em conectar os profissionais certos aos clientes. Atualmente está na fase de desenvolvimento de seu site e app, que conta com uma grande quantidade de funcionalidades. Uma dessas funcionalidades são os seus formulários, que precisam possuir algum tipo de validação dos dados de seus clientes.
+Multi-step signup form built with React Hook Form and TypeScript, featuring custom validation, input masks, and address autofill via the ViaCEP API.
 
-![Imagem da aplicação da Voll](voll.png)
+![Voll application preview](voll.png)
 
-## 🔨 Funcionalidades do projeto
+## 📖 About
 
-Neste estágio de desenvolvimento, a Voll possui as seguintes funcionalidades:
+Voll Med is a clinic that connects the right professionals to its patients. The company is developing its website and app, which will have a large number of features, and forms are a key part of them: patient data needs to be validated before it is submitted.
 
-- Formulário de cadastro de Paciente
-- Formulário de cadastro de médicos especialistas
+This project focuses on building those forms with React Hook Form and TypeScript, handling validation, error messages, and a better user experience.
 
-O [Figma dessa aplicação você encontra aqui](https://www.figma.com/file/hsW25fAq36IDzzIxBtpgCd/Voll.med-%7C-React-Hook-Forms?type=design&node-id=57-1388&mode=design).
+## 🔨 Features
 
-## ✔️ Técnicas e tecnologias utilizadas
+- Patient registration form, split into two steps (personal data and address)
+- Field validation with clear error messages (required fields, minimum length, format)
+- Password confirmation, checked against the first password field
+- Phone number input with a mask
+- Address autofill from the ZIP code (CEP) using the ViaCEP API, with an error shown for invalid ZIP codes
+- Type-safe form data with TypeScript
 
-O projeto utiliza as seguintes tecnologias e bibliotecas:
+The design is available on [Figma](https://www.figma.com/file/hsW25fAq36IDzzIxBtpgCd/Voll.med-%7C-React-Hook-Forms?type=design&node-id=57-1388&mode=design).
 
-- `React` - Framework JavaScript
-- `Vite` - Build tool para desenvolvimento rápido
-- `TypeScript` - Linguagem de programação principal
-- `Styled Components` - Ferramenta de estilização do nosso projeto
-- `Figma` - Para prototipagem do projeto
+## 🛠️ Tech Stack
 
-E muito mais...
+- **React 18**: UI library
+- **Vite**: build tool and dev server
+- **TypeScript**: static typing
+- **React Hook Form**: form state and validation
+- **react-input-mask**: input masks (phone number)
+- **Styled Components**: styling
+- **ViaCEP API**: address lookup by ZIP code
+- **ESLint**: linting
+- **Figma**: project design and prototype
 
-## 🛠️ Abrir e rodar o projeto
+## 🚀 Getting Started
 
-Para executar o projeto Meteora em seu ambiente local, siga estas etapas:
+### Prerequisites
 
-1. Certifique-se de ter o Node.js instalado em sua máquina. Nós usamos a versão 20.10.0
+- Node.js (version 20.10.0 was used in the course)
+- npm
 
-2. Baixe o repositório do projeto.
-
-3. Extraia os arquivos para uma pasta de sua preferência.
-
-4. Navegue até a pasta em questão via terminal (cmd):
+### Installation
 
 ```bash
-cd react-forms
-```
+# Clone the repository
+git clone https://github.com/DanielGranato/<repo-name>.git
 
-5. Instale as dependências usando o npm:
+# Navigate into the project folder
+cd <repo-name>
 
-```bash
+# Install dependencies
 npm install
 ```
 
-6. Inicie o projeto localmente:
+### Running locally
 
 ```bash
 npm run dev
 ```
 
-## 📚 Mais informações do curso
+## 🎯 Learning Objectives
 
-Gostou do projeto e quer conhecer mais?
+This project was built to practice:
 
-O design e protótipo deste projeto podem ser encontrados [aqui](https://www.figma.com/file/hsW25fAq36IDzzIxBtpgCd/Voll.med-%7C-React-Hook-Forms?type=design&node-id=57-1388&mode=design). Se você quiser desenvolver este projeto completo nas versões web e mobile, recomendo acessar a Formação [Desenvolva aplicações Web e Mobile com React e React Native](https://cursos.alura.com.br/formacao-aplicacoes-web-mobile-react-react-native)
+- Managing forms with `useForm` and `register`
+- Validating fields with built-in rules and custom `validate` functions
+- Comparing fields with `watch` (password confirmation)
+- Integrating components that need `Controller` (masked input)
+- Setting values and errors programmatically with `setValue`, `setError`, and `clearErrors`
+- Typing form data with TypeScript interfaces
+- Fetching data from an external API (ViaCEP) and handling request errors
 
-Aproveite o desenvolvimento e aprimoramento da Voll!
+## 📚 Course
+
+This project is part of Alura's React learning track. To build the complete project for web and mobile, check the [Web and Mobile apps with React and React Native](https://cursos.alura.com.br/formacao-aplicacoes-web-mobile-react-react-native) path.

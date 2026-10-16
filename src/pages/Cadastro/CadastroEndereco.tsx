@@ -24,7 +24,7 @@ const CadastroEndereco = () => {
     handleSubmit,
     setError,
     setValue,
-    watch,
+    clearErrors,
     formState: { errors },
   } = useForm<FormInputEndereco>({
     mode: "all",
@@ -41,30 +41,49 @@ const CadastroEndereco = () => {
     console.log(dados);
   };
 
-  const cepDigitado = watch("cep");
+  const marcarCepInvalido = () => {
+    setError("cep", {
+      type: "manual",
+      message: "Cep inválido",
+    });
+    setValue("rua", "");
+    setValue("bairro", "");
+    setValue("localidade", "");
+  };
 
   const fethEndereco = async (cep: string) => {
-    if (!cep) {
+    const cepNumerico = cep.replace(/\D/g, "");
+
+    if (!cepNumerico) {
       setError("cep", {
         type: "manual",
-        message: "Cep inválido",
+        message: "O campo é obrigatório",
       });
+      return;
+    }
 
+    if (cepNumerico.length !== 8) {
+      marcarCepInvalido();
       return;
     }
 
     try {
-      const response = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
+      const response = await fetch(
+        `https://viacep.com.br/ws/${cepNumerico}/json/`
+      );
       const data = await response.json();
 
-      if (response.ok) {
-        setValue("rua", data.logradouro);
-        setValue("localidade", `${data.localidade}, ${data.uf}`);
-        setValue("bairro", data.bairro);
-      } else {
-        throw new Error("Cep inválido");
+      if (!response.ok || data.erro) {
+        marcarCepInvalido();
+        return;
       }
+
+      clearErrors("cep");
+      setValue("rua", data.logradouro);
+      setValue("localidade", `${data.localidade}, ${data.uf}`);
+      setValue("bairro", data.bairro);
     } catch (error) {
+      marcarCepInvalido();
       console.error(error);
     }
   };
@@ -81,7 +100,7 @@ const CadastroEndereco = () => {
             type="text"
             {...register("cep", { required: "O campo é obrigatório" })}
             $error={!!errors.cep}
-            onBlur={() => fethEndereco(cepDigitado)}
+            onBlur={(event) => fethEndereco(event.target.value)}
           />
           {errors.cep && <ErrorMessage>{errors.cep.message}</ErrorMessage>}
         </Fieldset>
